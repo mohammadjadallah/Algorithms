@@ -1,0 +1,65 @@
+# Bisection Method
+
+# This code represent Algorithm named Bisection Method 
+# this algorithm help us to find the root to non-linear equation
+
+# Notes:
+#       you should learn about "Bisection Method" watch video or from any website
+#       this man help me a lot to understand it and make the algorithm in python
+#       source --> https://www.youtube.com/watch?v=xmVG8-Eb8Jg
+#       and you can find a lot of resources with just a littel search
+
+# Things you should know after understand it:
+#                                            interval [a, b] exist until bisection method work
+#                                            f(a)*f(b)<0 that is mean they should have different sign + and -
+#                                            if f(a)*f(c)<0 so make b = c else make a = c
+#                                            boundaries x lower = a, x upper = b, and c it is x root 
+#                                            x root = (a+b)/2
+#                                            accept error is the level that the iters will stop at him if error less than it
+
+#------------------------------------------------------The code-------------------------------------------------------------------------------------
+
+
+
+def bisectionMethod(funcs, Xu, Xl, error_acceptable):
+    '''
+This algorithm named Bisection Method that help us in find the root to non-linear equation
+
+    :param funcs: here put the function(equation)
+    :param Xu: this is the lower boundary
+    :param Xl: this is the upper boundary
+    :param error_acceptable: level of error
+
+    -----------------------------------------------------------------------------------------------
+    :return: the root and boundaries, error all of this in final iteration
+    -----------------------------------------------------------------------------------------------
+    '''
+
+    def function(x):
+        func = eval(funcs)
+        return func
+
+    error = abs(Xu - Xl)
+
+    while error > error_acceptable:
+        Xr = (Xu+Xl)/2
+
+        if function(Xu) * function(Xl) >= 0:
+             print("Bisection method is fail")
+             quit()
+
+        elif function(Xl) * function(Xr) < 0:
+            Xu = Xr
+            error = abs(Xu - Xl)
+        elif function(Xu) * function(Xr) < 0:
+            Xl = Xr
+            error = abs(Xu - Xl)
+        else:
+            print('What is going on? 🙄')
+
+    print(f'The error is {error}')
+    print(f'The lower boundary is {Xl}, and the upper boundary is {Xu}')
+    print(f'The root is {Xr}')
+
+print(bisectionMethod.__doc__)
+bisectionMethod("(4 * x ** 3) + 3 * x - 3", 0, 1, 0.05)
