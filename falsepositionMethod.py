@@ -1,5 +1,9 @@
-from tabulate import *
-from collections import deque
+# False position method used to numerical analysis it is a finding-root method
+# it is better than bisection method and fastest as well as it is find the root with a littel iteration than bisection method
+
+
+from tabulate import tabulate # to create a pretty table
+from collections import deque # because deque is faster than the regular list []
 
 
 def false_position_method(equation, a, b, given_error):
